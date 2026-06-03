@@ -1,0 +1,23 @@
+Create your own store! Your store should sell one type of things, like clothing or bikes, whatever you want your store to specialize in. 
+You should have a table for all the items in your store, and at least 5 columns for the kind of data you think you'd need to store. 
+You should sell at least 15 items, and use select statements to order your items by price and show at least one statistic about the items.
+
+
+INSERT into Clothing_Store VALUES (1, "wool sweater", "small", "blue", 45, "sweater");
+INSERT into Clothing_Store VALUES (2, "graphic tee", "small", "orange", 20, "T-shirt");
+INSERT into Clothing_Store VALUES (3, "bootleg pants", "medium", "blue", 40, "pants");
+INSERT into Clothing_Store VALUES (4, "capris", "small", "light blue", 30, "pants");
+INSERT into Clothing_Store VALUES (5, "knit cardigan", "small", "beige", 20, "cardigan");
+INSERT into Clothing_Store VALUES (6, "sweatpants", "large", "grey", 15, "pants");
+INSERT into Clothing_Store VALUES (7, "knee length boots", "seven", "black", 50, "shoes");
+INSERT into Clothing_Store VALUES (8, "raincoat", "medium", "yellow", 35, "coats");
+INSERT into Clothing_Store VALUES (9, "knit sweater", "large", "dark blue", 31, "sweater");
+INSERT into Clothing_Store VALUES (10, "wool sweater", "medium", "beige", 25, "sweater");
+INSERT into Clothing_Store VALUES (11, "smiley face tee", "medium", "yellow", 15, "T-shirt");
+INSERT into Clothing_Store VALUES (12, "tie dye tee", "small", "multicolor", 12, "T-shirt");
+INSERT into Clothing_Store VALUES (13, "skinny jeans", "small", "light blue", 34, "pants");
+INSERT into Clothing_Store VALUES (14, "skinny jeans", "medium", "dark blue", 33, "pants");
+INSERT into Clothing_Store VALUES (15, "crop top", "medium", "grey", 12, "T-shirt");
+
+SELECT * FROM Clothing_Store ORDER BY price;
+SELECT category, SUM(price) FROM Clothing_Store;
