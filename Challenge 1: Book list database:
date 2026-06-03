@@ -1,6 +1,7 @@
 Step 1: make a database table to store them in! In this first step, create a table to store your list of books. It should have columns for id, name, and rating. 
 CREATE TABLE Books (id INTEGER PRIMARY KEY, name TEXT, rating TEXT );
 
+
 INSERT INTO Books VALUES (1, "Where the Red Fern Grows", 8);
 INSERT INTO Books VALUES (2, "The Secret Garden", 9);
 INSERT INTO Books VALUES (3, "Percy Jackson", 7);
