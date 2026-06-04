@@ -1,0 +1,114 @@
+CREATE TABLE actors (id INTEGER PRIMARY KEY,
+    fullname TEXT,
+    age INTEGER,
+    birthday NUMERIC,
+    nationality TEXT,
+    typical_genre TEXT,
+    net_worth INTEGER);
+    
+INSERT INTO actors (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Pedro Pascal", 51, "1975-04-02", "Chilean-American", "Drama", 26);
+INSERT INTO actors (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Zendaya Coleman", 29, "1996-09-01", "American", "Drama", 35);
+INSERT INTO actors (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Timothee Chalamet", 30, "1996-12-27", "American", "Coming-of-age", 30);
+INSERT INTO actors (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Florence Pugh", 30, "1996-01-03", "English", "Psychological Thriller", 13);
+INSERT INTO actors (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Tom Holland", 30, "1996-06-01", "English", "Adventure", 25);
+INSERT INTO actors (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Margot Robbie", 36, "1990-07-02", "Australian", "Drama", 60);
+INSERT INTO actors (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Ryan Gosling", 46, "1980-11-12", "Canadian", "Romance", 70);
+INSERT INTO actors (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Anya Taylor-Joy", 30, "1996-04-16", "British-Argentine", "Psychological Thriller", 12);
+INSERT INTO actors (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Michael B. Jordan", 39, "1987-02-09", "American", "Action", 50);
+INSERT INTO actors (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Saoirse Ronan", 32, "1994-04-12", "Irish-American", "Coming-of-age", 10);
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY,
+    actor_id INTEGER,
+    title TEXT,
+    release_year INTEGER);
+INSERT INTO movies (actor_id, title, release_year) VALUES (1, "The Last of Us", 2023); 
+INSERT INTO movies (actor_id, title, release_year) VALUES (2, "Dune", 2021); 
+INSERT INTO movies (actor_id, title, release_year) VALUES (3, "Wonka", 2023); 
+INSERT INTO movies (actor_id, title, release_year) VALUES (4, "Oppenheimer", 2023); 
+INSERT INTO movies (actor_id, title, release_year) VALUES (5, "Spider-Man: No Way Home", 2021); 
+INSERT INTO movies (actor_id, title, release_year) VALUES (6, "Barbie", 2023); 
+INSERT INTO movies (actor_id, title, release_year) VALUES (7, "La La Land", 2016); 
+INSERT INTO movies (actor_id, title, release_year) VALUES (8, "The Queen's Gambit", 2020);
+INSERT INTO movies (actor_id, title, release_year) VALUES (9, "Creed", 2015); 
+INSERT INTO movies (actor_id, title, release_year) VALUES (10, "Lady Bird", 2017); 
+
+
+CREATE TABLE singers (id INTEGER PRIMARY KEY,
+    fullname TEXT,
+    age INTEGER,
+    birthday NUMERIC,
+    nationality TEXT,
+    typical_genre TEXT,
+    net_worth INTEGER);
+    
+INSERT INTO singers (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Taylor Swift", 36, "1989-12-03", "American", "Pop", 2000);
+INSERT INTO singers (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Bruno Mars", 40, "1995-10-08", "American", "R&B", 1000);
+INSERT INTO singers (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Justin Bieber", 32, "1994-03-01", "Canadian", "Pop", 220);
+INSERT INTO singers (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Adele", 38, "1998-05-05", "British", "Pop", 200);
+INSERT INTO singers (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Beyonce", 44, "1981-09-04", "American", "R&B", 175);
+INSERT INTO singers (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Ed Sheeran", 35, "1991-02-17", "British", "Pop", 300);
+INSERT INTO singers (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Billie Eilish", 25, "2001-12-18", "American", "Pop", 50);
+INSERT INTO singers (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("The Weeknd", 36, "1990-02-16", "R&B", "Canadian", 350);
+INSERT INTO singers (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Olivia Rodrigo", 23, "2003-02-20", "American", "Pop", 25);
+INSERT INTO singers (fullname, age, birthday, nationality, typical_genre, net_worth) VALUES ("Harry Styles", 32, "1994-02-01", "British", "Pop", 120);
+
+
+--> Actors: Full name and typical genre
+
+SELECT fullname, typical_genre FROM actors
+
+
+--> Actors and singers: Net worth >= 20 million
+SELECT fullname, net_worth, "Actor" AS industry FROM actors
+    WHERE net_worth >= 20
+    
+UNION ALL
+
+SELECT fullname, net_worth, "Singer" AS industry FROM singers
+    WHERE net_worth >= 20
+    ORDER BY net_worth DESC;
+
+
+--> Actors and singers: Nationality
+SELECT fullname, nationality FROM actors 
+
+UNION ALL
+
+SELECT fullname, nationality FROM singers
+    ORDER BY nationality ASC;
+
+
+--> Actors and singers: age >= 30
+SELECT fullname, age FROM actors
+    WHERE birthday >= 30
+
+UNION ALL
+
+SELECT fullname, age FROM singers
+    WHERE age >= 30
+    ORDER BY age ASC;
+
+
+
+--> Actors: nationality American AND net worth > 25 million
+
+SELECT * FROM actors WHERE nationality = "American" AND net_worth > 25;
+ 
+
+--> Actors, age and movies title JOIN
+
+/* explicit inner join - JOIN */
+SELECT actors.fullname, actors.age, movies.title
+    FROM actors
+    JOIN movies
+    ON actors.id = movies.actor_id;
+
+
+--> Actors name, age, movie title where typical genre is Drama
+
+/* explicit inner join - JOIN */
+SELECT actors.fullname, actors.age, actors.typical_genre, movies.title
+    FROM actors
+    JOIN movies
+    ON actors.id = movies.actor_id
+    WHERE actors.typical_genre = "Drama";
