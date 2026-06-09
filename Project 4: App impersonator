@@ -1,0 +1,48 @@
+Think about your favorite apps, and pick one that stores your data- like a game that stores scores, an app that lets you post updates, etc. 
+Now in this project, you're going to imagine that the app stores your data in a SQL database (which is pretty likely!), and write SQL statements that might look like their own SQL.
+CREATE a table to store the data.
+INSERT a few example rows in the table.
+Use an UPDATE to emulate what happens when you edit data in the app.
+Use a DELETE to emulate what happens when you delete data in the app.
+
+
+CREATE TABLE garden (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    plant_name TEXT,
+    month_planted TEXT,
+    water_frequency TEXT,
+    edible TEXT);
+    
+INSERT INTO garden (plant_name, month_planted, water_frequency, edible)
+    VALUES ("tomato", "May", "3 times per week", "yes");
+INSERT INTO garden (plant_name, month_planted, water_frequency, edible)
+    VALUES ("zuchinni", "Early June", "2 times per week", "yes");
+INSERT INTO garden (plant_name, month_planted, water_frequency, edible)
+    VALUES ("bell pepper", "Late May", "2 times per week", "yes");
+INSERT INTO garden (plant_name, month_planted, water_frequency, edible)
+    VALUES ("cucumber", "Late May", "3 times per week", "yes");
+INSERT INTO garden (plant_name, month_planted, water_frequency, edible)
+    VALUES ("swiss chard", "Late June", "2-3 times per week", "yes");
+INSERT INTO garden (plant_name, month_planted, water_frequency, edible)
+    VALUES ("bush beans", "Early June", "1-2 times per week", "yes");
+
+
+SELECT * FROM garden;
+
+ALTER TABLE garden ADD sunlight_requirement TEXT;
+
+INSERT INTO garden (plant_name, month_planted, water_frequency, edible, sunlight_requirement)
+    VALUES ("radish", "Mid June", "2-3 times per week", "yes", "Full sun to partial shade");
+    
+INSERT INTO garden (plant_name, month_planted, water_frequency, edible, sunlight_requirement)
+    VALUES ("marigold", "Early June", "1-2 times per week", "no", "Full sun");
+
+SELECT * FROM garden;
+
+UPDATE garden SET water_frequency = "2 times per week" WHERE ID = 6;
+
+SELECT * FROM garden;
+
+DELETE FROM garden WHERE ID = 1;
+
+SELECT * FROM garden;
